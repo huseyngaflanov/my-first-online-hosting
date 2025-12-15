@@ -1,0 +1,22 @@
+{
+  "name": "my-first-online-hosting",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huseyngaflanov/my-first-online-hosting.git"
+  },
+  "keywords": [],
+  "author": "huseyngaflanov",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/huseyngaflanov/my-first-online-hosting/issues"
+  },
+  "homepage": "https://github.com/huseyngaflanov/my-first-online-hosting#readme"
+}
