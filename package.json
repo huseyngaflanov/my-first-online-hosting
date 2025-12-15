@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/huseyngaflanov/my-first-online-hosting/issues"
   },
-  "homepage": "https://github.com/huseyngaflanov/my-first-online-hosting#readme"
+  "homepage": "https://github.com/huseyngaflanov/my-first-online-hosting#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }

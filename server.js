@@ -1,33 +1,27 @@
-const http = require("http");
-const fs = require("fs");
+const express = require("express");
 const path = require("path");
 
+const app = express();
 const PORT = 3000;
 
-const server = http.createServer((req, res) => {
-  let filePath = path.join(
-    __dirname,
-    "public",
-    req.url === "/" ? "index.html" : req.url
-  );
+// Serve static files (CSS, JS, images)
+app.use(express.static(path.join(__dirname, "public")));
 
-  const ext = path.extname(filePath);
+// Home route
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 
-  let contentType = "text/html";
-  if (ext === ".css") contentType = "text/css";
-  if (ext === ".js") contentType = "application/javascript";
+// Clean URL route: /about -> public/about.html
+app.get("/:page", (req, res) => {
+  const page = req.params.page;
+  const filePath = path.join(__dirname, "public", `${page}.html`);
 
-  fs.readFile(filePath, (err, content) => {
-    if (err) {
-      res.writeHead(404);
-      res.end("404 Not Found");
-    } else {
-      res.writeHead(200, { "Content-Type": contentType });
-      res.end(content);
-    }
+  res.sendFile(filePath, (err) => {
+    if (err) res.status(404).send("404 Not Found");
   });
 });
 
-server.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+app.listen(PORT, () => {
+  console.log(`🚀 Express server running at http://localhost:${PORT}`);
 });
